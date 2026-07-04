@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bike Alanya | Bisiklet, Yedek Parça ve Aksesuar Mağazası</title>
+<meta name="description" content="Yol, dağ ve elektrikli bisikletler; orijinal yedek parça ve aksesuarlar Bike Alanya'da. Hızlı kargo, güvenli ödeme, uzman servis.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Archivo:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link rel="stylesheet" href="style.css">
+<script>window.API_BASE = 'http://localhost:4000/api';</script>
+</head>
+<body>
+
+<!-- ================= TOPBAR ================= -->
+<div class="topbar">
+  <div class="wrap topbar-inner">
+    <div class="topbar-left">
+      <a href="tel:+905357391260"><i class="fa-solid fa-phone"></i> 0535 739 12 60</a>
+      <a href="mailto:destek@bikealanya.com"><i class="fa-solid fa-envelope"></i> destek@bikealanya.com</a>
+    </div>
+    <div class="topbar-right">
+      <span class="ticker"><i class="fa-solid fa-truck-fast"></i> 5.000 TL üzeri siparişlerde kargo bizden</span>
+      <a href="#" class="topbar-track">Kargo Takibi</a>
+    </div>
+  </div>
+</div>
+
+<!-- ================= HEADER ================= -->
+<header class="site-header">
+  <div class="wrap header-inner">
+    <button class="hamburger" id="hamburgerBtn" aria-label="Menü">
+      <span></span><span></span><span></span>
+    </button>
+
+    <a href="#" class="logo">BİKE<span>ALANYA</span><em>.com</em></a>
+
+    <div class="search-bar">
+      <input type="text" placeholder="Bisiklet, marka veya parça ara...">
+      <button aria-label="Ara"><i class="fa-solid fa-magnifying-glass"></i></button>
+    </div>
+
+    <div class="header-icons">
+      <button class="icon-btn" id="accountBtn" aria-label="Hesabım">
+        <i class="fa-regular fa-user"></i><span>Hesabım</span>
+      </button>
+      <button class="icon-btn" aria-label="Favoriler">
+        <i class="fa-regular fa-heart"></i><span>Favoriler</span>
+      </button>
+      <button class="icon-btn cart-btn" id="cartBtn" aria-label="Sepetim">
+        <i class="fa-solid fa-cart-shopping"></i><span>Sepetim</span>
+        <span class="cart-count" id="cartCount">0</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- MEGA NAV -->
+  <nav class="mega-nav" id="megaNav">
+    <ul class="mega-nav-list">
+      <li class="has-mega">
+        <a href="#products">Bisiklet <i class="fa-solid fa-chevron-down"></i></a>
+        <div class="mega-panel">
+          <div class="mega-col">
+            <h5>Kategoriler</h5>
+            <a href="#" data-cat="dag">Dağ Bisikletleri</a>
+            <a href="#" data-cat="yol">Yol / Gravel</a>
+            <a href="#" data-cat="e-bike">Elektrikli Bisiklet</a>
+            <a href="#" data-cat="sehir">Şehir / Trekking</a>
+            <a href="#" data-cat="katlanir">Katlanır Bisiklet</a>
+            <a href="#" data-cat="cocuk">Çocuk Bisikleti</a>
+          </div>
+          <div class="mega-col">
+            <h5>Öne Çıkanlar</h5>
+            <a href="#">Yeni Sezon Modelleri</a>
+            <a href="#">Karbon Kadrolar</a>
+            <a href="#">Outlet Bisikletler</a>
+          </div>
+          <div class="mega-promo">
+            <img src="https://images.unsplash.com/photo-1553978297-833d09932d31?auto=format&fit=crop&w=500&q=60" alt="Dağ bisikleti kampanyası">
+            <p>Dağ bisikletlerinde <strong>%20'ye varan</strong> indirim</p>
+          </div>
+        </div>
+      </li>
+      <li class="has-mega">
+        <a href="#products">Yedek Parça <i class="fa-solid fa-chevron-down"></i></a>
+        <div class="mega-panel">
+          <div class="mega-col">
+            <h5>Gruplar</h5>
+            <a href="#" data-cat="vites">Vites Grubu</a>
+            <a href="#" data-cat="fren">Fren Grubu</a>
+            <a href="#" data-cat="teker">Teker & Jant</a>
+            <a href="#" data-cat="sele">Sele Grubu</a>
+          </div>
+          <div class="mega-col">
+            <h5>Diğer</h5>
+            <a href="#" data-cat="amortisor">Amortisör</a>
+            <a href="#" data-cat="pedal">Pedal & Kal</a>
+            <a href="#" data-cat="zincir">Zincir & Kasetler</a>
+          </div>
+        </div>
+      </li>
+      <li><a href="#products" data-cat="aksesuar">Aksesuar</a></li>
+      <li><a href="#products" data-cat="giyim">Giyim</a></li>
+      <li><a href="#products" data-cat="lastik">Lastikler</a></li>
+      <li><a href="#products" data-cat="bakim">Bakım / Onarım</a></li>
+      <li class="nav-sale"><a href="#deals"><i class="fa-solid fa-bolt"></i> Fırsatlar</a></li>
+    </ul>
+  </nav>
+</header>
+
+<!-- ================= HERO SLIDER ================= -->
+<section class="hero-slider" id="heroSlider">
+  <div class="slide active" style="background-image:linear-gradient(100deg, rgba(10,12,16,.88) 20%, rgba(10,12,16,.15) 75%), url('https://images.unsplash.com/photo-1571068316344-75bc76f77891?auto=format&fit=crop&w=1600&q=75')">
+    <div class="wrap slide-content">
+      <span class="eyebrow">2026 KOLEKSİYONU</span>
+      <h1>YOLUN RİTMİNİ<br>SEN BELİRLE</h1>
+      <p>Karbon kadrolu yol bisikletlerinde stoklarla sınırlı fırsatlar.</p>
+      <a href="#products" class="btn-primary">Yol Bisikletlerini Gör</a>
+    </div>
+  </div>
+  <div class="slide" style="background-image:linear-gradient(100deg, rgba(10,12,16,.88) 20%, rgba(10,12,16,.15) 75%), url('https://images.unsplash.com/photo-1553978297-833d09932d31?auto=format&fit=crop&w=1600&q=75')">
+    <div class="wrap slide-content">
+      <span class="eyebrow">ARAZİYE MEYDAN OKU</span>
+      <h1>DAĞ BİSİKLETİNDE<br>%20'YE VARAN İNDİRİM</h1>
+      <p>29" ve 27.5" jant seçenekleriyle her parkura uygun MTB modelleri.</p>
+      <a href="#deals" class="btn-primary">Fırsatları Keşfet</a>
+    </div>
+  </div>
+  <div class="slide" style="background-image:linear-gradient(100deg, rgba(10,12,16,.88) 20%, rgba(10,12,16,.15) 75%), url('https://images.unsplash.com/photo-1532298229144-0ee0c9e9ad58?auto=format&fit=crop&w=1600&q=75')">
+    <div class="wrap slide-content">
+      <span class="eyebrow">ŞARJI TAK, YOLA ÇIK</span>
+      <h1>ELEKTRİKLİ BİSİKLETLER<br>STOKTA</h1>
+      <p>Şehir içi ulaşımda konfor ve güç bir arada. 3 yıl garanti.</p>
+      <a href="#products" class="btn-primary">E-Bike Modellerini Gör</a>
+    </div>
+  </div>
+  <div class="slider-dots" id="sliderDots"></div>
+  <button class="slider-arrow prev" id="prevSlide" aria-label="Önceki"><i class="fa-solid fa-chevron-left"></i></button>
+  <button class="slider-arrow next" id="nextSlide" aria-label="Sonraki"><i class="fa-solid fa-chevron-right"></i></button>
+</section>
+
+<!-- ================= QUICK CATEGORIES ================= -->
+<section class="quick-cats wrap">
+  <a href="#products" class="quick-cat" data-cat="dag">
+    <div class="qc-icon"><i class="fa-solid fa-mountain"></i></div>
+    <span>Dağ Bisikleti</span>
+  </a>
+  <a href="#products" class="quick-cat" data-cat="yol">
+    <div class="qc-icon"><i class="fa-solid fa-bicycle"></i></div>
+    <span>Yol Bisikleti</span>
+  </a>
+  <a href="#products" class="quick-cat" data-cat="e-bike">
+    <div class="qc-icon"><i class="fa-solid fa-bolt"></i></div>
+    <span>Elektrikli</span>
+  </a>
+  <a href="#products" class="quick-cat" data-cat="aksesuar">
+    <div class="qc-icon"><i class="fa-solid fa-bag-shopping"></i></div>
+    <span>Aksesuar</span>
+  </a>
+  <a href="#products" class="quick-cat" data-cat="giyim">
+    <div class="qc-icon"><i class="fa-solid fa-shirt"></i></div>
+    <span>Giyim</span>
+  </a>
+  <a href="#products" class="quick-cat" data-cat="yedek-parca">
+    <div class="qc-icon"><i class="fa-solid fa-gear"></i></div>
+    <span>Yedek Parça</span>
+  </a>
+</section>
+
+<!-- ================= PRODUCTS ================= -->
+<section class="product-section wrap" id="products">
+  <div class="section-header">
+    <div>
+      <span class="eyebrow-sm">SEÇKİ</span>
+      <h2>Öne Çıkan Ürünler</h2>
+    </div>
+    <div class="filter-tabs" id="filterTabs">
+      <button class="filter-tab active" data-cat="tumu">Tümü</button>
+      <button class="filter-tab" data-cat="dag">Dağ</button>
+      <button class="filter-tab" data-cat="yol">Yol</button>
+      <button class="filter-tab" data-cat="e-bike">Elektrikli</button>
+      <button class="filter-tab" data-cat="aksesuar">Aksesuar</button>
+      <button class="filter-tab" data-cat="giyim">Giyim</button>
+    </div>
+  </div>
+
+  <div class="product-grid" id="productGrid">
+    <div class="grid-loading">Ürünler yükleniyor...</div>
+  </div>
+</section>
+
+<!-- ================= PROMO STRIP ================= -->
+<section class="promo-strip wrap">
+  <div class="promo-box promo-dark">
+    <span class="eyebrow-sm">SERVİS</span>
+    <h3>Ücretsiz Bisiklet Bakım Kontrolü</h3>
+    <p>Aldığınız her bisikletle birlikte ilk 3 ay bakım kontrolü hediye.</p>
+    <a href="#" class="btn-outline">Detayları Gör</a>
+  </div>
+  <div class="promo-box promo-red">
+    <span class="eyebrow-sm">FIRSAT</span>
+    <h3>Yedek Parçada 2 Al 1 Öde</h3>
+    <p>Seçili iç lastik ve balata ürünlerinde geçerlidir.</p>
+    <a href="#deals" class="btn-outline">Fırsatları Gör</a>
+  </div>
+</section>
+
+<!-- ================= DEALS ================= -->
+<section class="product-section wrap" id="deals">
+  <div class="section-header">
+    <div>
+      <span class="eyebrow-sm">SINIRLI SÜRE</span>
+      <h2>İndirimli Ürünler</h2>
+    </div>
+    <a href="#products" class="see-all">Tümünü Gör <i class="fa-solid fa-arrow-right"></i></a>
+  </div>
+
+  <div class="product-grid" id="dealsGrid">
+    <div class="grid-loading">Fırsatlar yükleniyor...</div>
+  </div>
+</section>
+
+<!-- ================= BRAND STRIP ================= -->
+<section class="brand-strip">
+  <div class="wrap brand-strip-inner">
+    <span>KRON</span><span>CORELLI</span><span>SALCANO</span><span>SHIMGROUP</span><span>TRAILFORK</span><span>VELO</span><span>NITRO</span><span>AERO</span>
+  </div>
+</section>
+
+<!-- ================= TRUST BAR ================= -->
+<section class="trust-bar">
+  <div class="wrap trust-grid">
+    <div class="trust-item">
+      <i class="fa-solid fa-truck"></i>
+      <div><h4>Ücretsiz Kargo</h4><p>5.000 TL üzeri alışverişlerde</p></div>
+    </div>
+    <div class="trust-item">
+      <i class="fa-solid fa-rotate-left"></i>
+      <div><h4>14 Gün İade</h4><p>Koşulsuz iade garantisi</p></div>
+    </div>
+    <div class="trust-item">
+      <i class="fa-solid fa-lock"></i>
+      <div><h4>Güvenli Ödeme</h4><p>256-bit SSL koruması</p></div>
+    </div>
+    <div class="trust-item">
+      <i class="fa-solid fa-headset"></i>
+      <div><h4>7/24 Destek</h4><p>Uzman ekibimiz yanınızda</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= NEWSLETTER ================= -->
+<section class="newsletter">
+  <div class="wrap newsletter-inner">
+    <div>
+      <h3>Fırsatları kaçırma</h3>
+      <p>Yeni ürün ve kampanyalardan ilk sen haberdar ol.</p>
+    </div>
+    <form id="newsletterForm">
+      <input type="email" placeholder="E-posta adresin" required>
+      <button type="submit">Abone Ol</button>
+    </form>
+  </div>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-col footer-brand">
+      <a href="#" class="logo">BİKE<span>ALANYA</span></a>
+      <p>2013'ten beri Alanya'da bisiklet tutkunlarının adresi. Orijinal ürün garantisiyle satış ve profesyonel servis hizmeti.</p>
+      <div class="footer-social">
+        <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+        <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+        <a href="#" aria-label="X"><i class="fa-brands fa-x-twitter"></i></a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h5>Kurumsal</h5>
+      <a href="#">Hakkımızda</a>
+      <a href="#">Mağazalarımız</a>
+      <a href="#">İletişim</a>
+      <a href="#">Kariyer</a>
+    </div>
+    <div class="footer-col">
+      <h5>Alışveriş</h5>
+      <a href="#">Mesafeli Satış Sözleşmesi</a>
+      <a href="#">İptal / İade Koşulları</a>
+      <a href="#">Gizlilik ve Güvenlik</a>
+      <a href="#">Ödeme Seçenekleri</a>
+    </div>
+    <div class="footer-col">
+      <h5>Destek</h5>
+      <a href="#">Kargo Takibi</a>
+      <a href="#">Sıkça Sorulan Sorular</a>
+      <a href="#">Servis Randevusu</a>
+      <a href="#">WhatsApp:  0535 739 12 60</a>
+    </div>
+  </div>
+  <div class="wrap footer-bottom">
+    <p>&copy; 2026 Bike Alanya. Tüm hakları saklıdır.</p>
+    <div class="pay-icons">
+      <span><i class="fa-brands fa-cc-visa"></i></span>
+      <span><i class="fa-brands fa-cc-mastercard"></i></span>
+      <span><i class="fa-solid fa-lock"></i> 256-bit SSL</span>
+    </div>
+  </div>
+</footer>
+
+<!-- ================= CART PANEL ================= -->
+<div class="cart-overlay" id="cartOverlay"></div>
+<aside class="cart-panel" id="cartPanel">
+  <div class="cart-head">
+    <h3><i class="fa-solid fa-cart-shopping"></i> Sepetim</h3>
+    <button id="closeCart" aria-label="Kapat"><i class="fa-solid fa-xmark"></i></button>
+  </div>
+  <div class="cart-items" id="cartItems">
+    <div class="cart-empty" id="cartEmpty">
+      <i class="fa-solid fa-cart-shopping"></i>
+      <p>Sepetiniz henüz boş</p>
+      <span>Ürünleri keşfetmeye başlayın</span>
+    </div>
+  </div>
+  <div class="cart-footer" id="cartFooter">
+    <div class="cart-total-row">
+      <span>Ara Toplam</span>
+      <strong id="cartTotal">0 TL</strong>
+    </div>
+    <button class="btn-primary btn-checkout" id="openCheckoutBtn">Siparişi Tamamla</button>
+  </div>
+</aside>
+
+<!-- ================= CHECKOUT MODAL ================= -->
+<div class="checkout-overlay" id="checkoutOverlay"></div>
+<div class="checkout-modal" id="checkoutModal">
+  <button class="checkout-close" id="closeCheckout" aria-label="Kapat"><i class="fa-solid fa-xmark"></i></button>
+
+  <!-- Step 1: buyer info -->
+  <div class="checkout-step" id="checkoutFormStep">
+    <h3><i class="fa-solid fa-truck-fast"></i> Teslimat Bilgileri</h3>
+    <form id="buyerForm">
+      <div class="form-row">
+        <div class="form-field"><label>Ad</label><input type="text" name="name" required></div>
+        <div class="form-field"><label>Soyad</label><input type="text" name="surname" required></div>
+      </div>
+      <div class="form-row">
+        <div class="form-field"><label>E-posta</label><input type="email" name="email" required></div>
+        <div class="form-field"><label>Telefon</label><input type="tel" name="phone" placeholder="+90 5xx xxx xx xx" required></div>
+      </div>
+      <div class="form-field"><label>Adres</label><textarea name="address" rows="2" required></textarea></div>
+      <div class="form-row">
+        <div class="form-field"><label>Şehir</label><input type="text" name="city" required></div>
+        <div class="form-field"><label>Posta Kodu</label><input type="text" name="zipCode" placeholder="07400"></div>
+      </div>
+      <div class="form-field"><label>T.C. Kimlik No <span class="hint">(ödeme için gerekli)</span></label><input type="text" name="identityNumber" maxlength="11" placeholder="11 haneli"></div>
+      <p class="checkout-note" id="checkoutError"></p>
+      <button type="submit" class="btn-primary" id="submitBuyerForm">
+        <span class="btn-label">Ödemeye Geç</span>
+        <span class="btn-spinner" style="display:none;"><i class="fa-solid fa-spinner fa-spin"></i></span>
+      </button>
+    </form>
+  </div>
+
+  <!-- Step 2: iyzico checkout form gets injected here -->
+  <div class="checkout-step" id="checkoutPaymentStep" style="display:none;">
+    <h3><i class="fa-solid fa-lock"></i> Güvenli Ödeme</h3>
+    <div id="iyzipay-checkout-form" class="responsive"></div>
+  </div>
+</div>
+
+<!-- WhatsApp -->
+<a href="https://api.whatsapp.com/send?phone=905510931931&text=Merhaba,%20web%20sitenizdeki%20ürünler%20hakkında%20bilgi%20alabilir%20miyim?" class="whatsapp-float" target="_blank" rel="noopener" aria-label="WhatsApp ile iletişime geç">
+  <i class="fab fa-whatsapp"></i>
+</a>
+
+<button class="back-to-top" id="backToTop" aria-label="Yukarı çık"><i class="fa-solid fa-arrow-up"></i></button>
+
+<div class="toast" id="toast"></div>
+
+<script src="script.js"></script>
+</body>
+</html>

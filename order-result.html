@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sipariş Durumu | Bike Alanya</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Archivo:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link rel="stylesheet" href="style.css">
+<script>window.API_BASE = 'http://localhost:4000/api';</script>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap header-inner" style="padding:16px 0;">
+    <a href="index.html" class="logo">BİKE<span>ALANYA</span><em>.com</em></a>
+  </div>
+</header>
+
+<div class="order-result-wrap">
+  <div class="order-result-card pending" id="resultCard">
+    <div class="icon"><i class="fa-solid fa-spinner fa-spin"></i></div>
+    <h2 id="resultTitle">Sipariş durumu kontrol ediliyor...</h2>
+    <p id="resultText">Lütfen bekleyin.</p>
+    <div class="order-summary" id="orderSummary" style="display:none;"></div>
+    <a href="index.html" class="btn-primary">Alışverişe Devam Et</a>
+  </div>
+</div>
+
+<script>
+  const API_BASE = window.API_BASE || 'http://localhost:4000/api';
+
+  function formatTL(n) { return Math.round(n).toLocaleString('tr-TR') + ' TL'; }
+
+  const params = new URLSearchParams(window.location.search);
+  const orderId = params.get('orderId');
+  const status = params.get('status');
+
+  const card = document.getElementById('resultCard');
+  const title = document.getElementById('resultTitle');
+  const text = document.getElementById('resultText');
+  const summary = document.getElementById('orderSummary');
+
+  function render(state, o) {
+    card.className = 'order-result-card ' + state;
+    const icons = { success: 'fa-circle-check', failed: 'fa-circle-xmark', error: 'fa-triangle-exclamation', pending: 'fa-clock' };
+    card.querySelector('.icon').innerHTML = `<i class="fa-solid ${icons[state] || 'fa-circle-question'}"></i>`;
+
+    if (state === 'success' || state === 'paid') {
+      title.textContent = 'Ödemeniz Alındı!';
+      text.textContent = `Siparişiniz #${orderId} başarıyla oluşturuldu. En kısa sürede kargoya verilecek.`;
+    } else if (state === 'failed') {
+      title.textContent = 'Ödeme Tamamlanamadı';
+      text.textContent = 'Kartınızdan çekim yapılamadı. Lütfen bilgilerinizi kontrol edip tekrar deneyin.';
+    } else {
+      title.textContent = 'Bir Sorun Oluştu';
+      text.textContent = 'Sipariş durumu doğrulanamadı. Sorun devam ederse bizimle iletişime geçin.';
+    }
+
+    if (o) {
+      summary.style.display = 'block';
+      summary.innerHTML = `
+        <div><span>Sipariş No</span><strong>#${o.id}</strong></div>
+        <div><span>Ürün Sayısı</span><strong>${o.items.reduce((s,i)=>s+i.qty,0)}</strong></div>
+        <div><span>Toplam</span><strong>${formatTL(o.total)}</strong></div>
+      `;
+    }
+  }
+
+  (async () => {
+    if (!orderId) {
+      render(status === 'error' ? 'error' : 'error');
+      return;
+    }
+    try {
+      const res = await fetch(`${API_BASE}/orders/status/${orderId}`);
+      if (!res.ok) throw new Error();
+      const order = await res.json();
+      render(order.status === 'paid' ? 'success' : order.status, order);
+    } catch {
+      render('error');
+    }
+  })();
+</script>
+
+</body>
+</html>
