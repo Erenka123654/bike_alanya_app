@@ -500,3 +500,8 @@ section[id] { scroll-margin-top: 140px; }
   .rental-section { padding: 48px 0; }
   .btn-ghost, .slide-actions .btn-primary { padding-left: 22px; padding-right: 22px; }
 }
+
+/* --- Header: randevu butonu (mağaza kaldırıldı) --- */
+.header-cta { margin-left: auto; padding: 12px 26px; font-size: 13.5px; }
+@media (max-width: 640px) { .header-cta { padding: 10px 16px; font-size: 12.5px; } }
+@media (min-width: 981px) { .footer-grid { grid-template-columns: 1.6fr 1fr 1fr; } }
