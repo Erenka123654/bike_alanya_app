@@ -332,3 +332,171 @@ ul { list-style: none; }
 .order-result-card p { color: var(--text-mute); font-size: 14.5px; margin-bottom: 26px; }
 .order-summary { text-align: left; background: var(--paper); border-radius: 10px; padding: 16px 18px; margin-bottom: 26px; font-size: 13.5px; }
 .order-summary div { display: flex; justify-content: space-between; padding: 5px 0; }
+
+/* =====================================================================
+   TAMİR & SERVİS · KİRALAMA · RANDEVU
+   ===================================================================== */
+section[id] { scroll-margin-top: 140px; }
+
+/* --- Menü vurgusu --- */
+.nav-service > a i { color: var(--red); margin-right: 5px; }
+
+/* --- Hero: yazı tabanlı slaytlar --- */
+.slide-service { background-image: linear-gradient(115deg, #0e1013 25%, #26343f 100%); }
+.slide-rental { background-image: linear-gradient(115deg, #0e1013 25%, #1d4f6e 115%); }
+.slide-deco {
+  position: absolute; right: 8%; top: 50%; transform: translateY(-50%) rotate(-12deg);
+  font-size: clamp(140px, 22vw, 320px); color: rgba(255,255,255,.06); pointer-events: none;
+}
+.slide-actions { display: flex; gap: 12px; flex-wrap: wrap; }
+.btn-ghost {
+  display: inline-block; border: 1.5px solid rgba(255,255,255,.5); color: #fff; padding: 13.5px 30px;
+  border-radius: 6px; font-weight: 700; font-size: 14px; transition: background .2s, border-color .2s;
+}
+.btn-ghost:hover { background: rgba(255,255,255,.12); border-color: #fff; }
+
+/* --- Hızlı kategori: öne çıkan iki kutu --- */
+.quick-cat-hl { background: var(--ink); border-color: var(--ink); color: #fff; }
+.quick-cat-hl .qc-icon { background: rgba(230,57,70,.2); }
+
+/* --- Hizmet kartları --- */
+.service-section { margin: 56px auto; }
+.service-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 18px; }
+.service-card {
+  background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); padding: 22px;
+  display: flex; flex-direction: column; gap: 10px; transition: transform .2s, box-shadow .2s, border-color .2s;
+}
+.service-card:hover { transform: translateY(-4px); box-shadow: var(--shadow); border-color: transparent; }
+.sc-icon { width: 46px; height: 46px; border-radius: 12px; background: #fdeaec; color: var(--red); display: flex; align-items: center; justify-content: center; font-size: 19px; }
+.service-card h3 { font-size: 16px; }
+.service-card p { font-size: 13.5px; color: var(--text-mute); line-height: 1.5; flex: 1; }
+.sc-foot { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding-top: 6px; }
+.sc-price { font-family: var(--font-mono); font-weight: 700; font-size: 15px; color: var(--red); }
+.sc-price small { font-family: var(--font-body); font-weight: 600; font-size: 11px; color: var(--text-mute); margin-right: 5px; }
+.sc-link { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 700; color: var(--ink); transition: color .2s, gap .2s; }
+.sc-link:hover { color: var(--red); gap: 9px; }
+
+/* --- Bakım paketleri --- */
+.package-head { margin: 52px 0 22px; }
+.package-head h3 { font-family: var(--font-display); font-size: 22px; margin-bottom: 6px; }
+.package-head p { color: var(--text-mute); font-size: 14px; }
+.package-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; }
+.package-card { position: relative; background: #fff; border: 1.5px solid var(--line); border-radius: 14px; padding: 30px 26px 26px; display: flex; flex-direction: column; }
+.package-card.featured { background: var(--ink); border-color: var(--ink); color: #fff; }
+.package-tag { position: absolute; top: -12px; left: 24px; background: var(--red); color: #fff; font-size: 10.5px; font-weight: 800; letter-spacing: .05em; padding: 5px 12px; border-radius: 20px; }
+.package-card h4 { font-family: var(--font-display); font-size: 18px; }
+.pk-sub { font-size: 13px; color: var(--text-mute); margin-top: 3px; }
+.package-card.featured .pk-sub { color: #b6b9bf; }
+.package-price { font-family: var(--font-mono); font-size: 28px; font-weight: 700; color: var(--red); margin: 14px 0 0; }
+.package-card ul { margin: 18px 0 24px; display: flex; flex-direction: column; gap: 10px; flex: 1; }
+.package-card li { display: flex; align-items: flex-start; gap: 10px; font-size: 13.5px; line-height: 1.4; }
+.package-card li i { color: #2b8a5e; font-size: 12px; margin-top: 3px; }
+.package-card.featured li i { color: #4ade80; }
+.package-card .btn-primary { width: 100%; text-align: center; }
+
+/* --- Servis adımları --- */
+.steps { list-style: none; display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; margin-top: 52px; counter-reset: step; }
+.steps li { position: relative; counter-increment: step; background: #fff; border: 1px solid var(--line); border-radius: var(--radius); padding: 56px 20px 22px; }
+.steps li::before {
+  content: counter(step); position: absolute; top: 18px; left: 20px; width: 28px; height: 28px; border-radius: 50%;
+  background: var(--red); color: #fff; font-family: var(--font-mono); font-weight: 700; font-size: 13px;
+  display: flex; align-items: center; justify-content: center;
+}
+.steps h4 { font-size: 15px; margin-bottom: 6px; }
+.steps p { font-size: 13px; color: var(--text-mute); line-height: 1.5; }
+
+/* --- Kiralama bandı --- */
+.rental-section { background: var(--ink); color: #fff; padding: 64px 0; margin: 64px 0; }
+.rental-section .section-header h2 { color: #fff; }
+.rental-section .eyebrow-sm { color: #ff8a93; }
+.rental-section .see-all { color: #ff8a93; }
+.rental-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 18px; }
+.rental-card { background: var(--ink-soft); border: 1px solid #2f333b; border-radius: 14px; padding: 24px; display: flex; flex-direction: column; gap: 12px; transition: transform .2s, border-color .2s; }
+.rental-card:hover { transform: translateY(-4px); border-color: #4a4f59; }
+.rc-top { display: flex; align-items: center; gap: 12px; }
+.rc-icon { width: 46px; height: 46px; flex-shrink: 0; border-radius: 50%; background: rgba(230,57,70,.15); color: #ff6b76; display: flex; align-items: center; justify-content: center; font-size: 19px; }
+.rental-card h3 { font-size: 17px; }
+.rental-card p { font-size: 13px; color: #b6b9bf; line-height: 1.5; flex: 1; }
+.rc-prices { display: flex; flex-direction: column; gap: 6px; }
+.rc-price { background: rgba(255,255,255,.05); border-radius: 8px; padding: 9px 12px; display: flex; justify-content: space-between; align-items: center; }
+.rc-price b { font-family: var(--font-mono); font-size: 13.5px; color: #fff; }
+.rc-price span { font-size: 11.5px; color: #9ea2a9; }
+.rental-card .btn-primary { width: 100%; text-align: center; padding: 13px; }
+
+.rental-info { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 36px; }
+.info-box { background: var(--ink-soft); border: 1px solid #2f333b; border-radius: 14px; padding: 26px; }
+.info-box h4 { font-size: 15px; margin-bottom: 16px; display: flex; align-items: center; gap: 10px; }
+.info-box h4 i { color: var(--red); }
+.info-steps { list-style: none; counter-reset: istep; display: flex; flex-direction: column; gap: 12px; }
+.info-steps li { counter-increment: istep; display: flex; gap: 12px; font-size: 13.5px; color: #d4d6db; line-height: 1.45; }
+.info-steps li::before {
+  content: counter(istep); flex-shrink: 0; width: 22px; height: 22px; border-radius: 50%; background: rgba(230,57,70,.2);
+  color: #ff8a93; font-family: var(--font-mono); font-size: 12px; font-weight: 700; display: flex; align-items: center; justify-content: center;
+}
+.info-list { display: flex; flex-direction: column; gap: 12px; }
+.info-list li { display: flex; gap: 10px; font-size: 13.5px; color: #d4d6db; line-height: 1.45; }
+.info-list li i { color: #4ade80; margin-top: 3px; font-size: 13px; }
+
+/* --- Randevu / rezervasyon --- */
+.booking-section { margin: 56px auto 64px; }
+.booking-card { display: grid; grid-template-columns: 1fr 1.3fr; background: #fff; border: 1px solid var(--line); border-radius: 16px; overflow: hidden; box-shadow: var(--shadow); }
+.booking-side { background: var(--ink); color: #fff; padding: 40px 34px; display: flex; flex-direction: column; gap: 16px; }
+.booking-side .eyebrow-sm { color: #ff8a93; }
+.booking-side h2 { font-family: var(--font-display); font-size: 26px; line-height: 1.15; }
+.booking-side p { color: #b6b9bf; font-size: 14px; line-height: 1.6; }
+.booking-contact { display: flex; flex-direction: column; gap: 10px; margin-top: auto; padding-top: 12px; }
+.booking-contact a { display: flex; align-items: center; gap: 12px; padding: 14px 16px; border-radius: 10px; background: rgba(255,255,255,.07); font-weight: 700; font-size: 14px; transition: background .2s; }
+.booking-contact a:hover { background: rgba(255,255,255,.14); }
+.booking-contact a i { width: 18px; text-align: center; color: var(--red); }
+.booking-contact a.wa i { color: var(--whatsapp); font-size: 18px; }
+
+.booking-main { padding: 30px 32px; }
+.booking-tabs { display: flex; gap: 6px; background: var(--paper); padding: 5px; border-radius: 10px; margin-bottom: 24px; }
+.booking-tab { flex: 1; display: flex; align-items: center; justify-content: center; gap: 8px; padding: 11px 10px; border-radius: 7px; font-weight: 700; font-size: 13.5px; color: var(--text-mute); transition: background .2s, color .2s; }
+.booking-tab:hover { color: var(--ink); }
+.booking-tab.active { background: #fff; color: var(--ink); box-shadow: 0 2px 8px rgba(20,23,28,.08); }
+.booking-tab.active i { color: var(--red); }
+.booking-panel { display: none; }
+.booking-panel.active { display: block; }
+
+.form-field select {
+  width: 100%; padding: 11px 13px; border: 1.5px solid var(--line); border-radius: 8px; font-family: inherit; font-size: 14px; background: #fff; color: var(--text);
+}
+.form-field select:focus { outline: none; border-color: var(--steel); }
+.form-field input[type="date"], .form-field input[type="number"] { min-height: 43px; }
+
+.estimate-box { display: flex; justify-content: space-between; align-items: center; gap: 14px; background: var(--paper); border-radius: 10px; padding: 13px 16px; margin-bottom: 14px; font-size: 13.5px; font-weight: 600; }
+.estimate-box small { display: block; font-weight: 400; font-size: 11.5px; color: var(--text-mute); margin-top: 2px; }
+.estimate-box strong { font-family: var(--font-mono); font-size: 20px; color: var(--red); white-space: nowrap; }
+
+.form-error { color: var(--red); font-size: 13px; min-height: 18px; margin-bottom: 8px; }
+.btn-wa {
+  width: 100%; display: flex; align-items: center; justify-content: center; gap: 10px; background: var(--whatsapp); color: #fff;
+  padding: 15px; border-radius: 6px; font-weight: 700; font-size: 14px; transition: filter .2s, transform .2s;
+}
+.btn-wa:hover { filter: brightness(.93); transform: translateY(-2px); }
+.btn-wa i { font-size: 18px; }
+
+/* --- Duyarlı --- */
+@media (max-width: 980px) {
+  .steps { grid-template-columns: repeat(2, 1fr); }
+  .rental-info { grid-template-columns: 1fr; }
+  .booking-card { grid-template-columns: 1fr; }
+
+  /* mobil menü */
+  .mega-nav.mobile-open { display: block; }
+  .mega-nav-list { flex-direction: column; align-items: stretch; }
+  .mega-panel { position: static; min-width: 0; grid-template-columns: 1fr; gap: 14px; padding: 12px 22px 16px; border-radius: 0; box-shadow: none; background: #1b1e24; }
+  .mega-col a { color: #dfe1e5; }
+  .mega-col h5 { color: #8b9099; }
+  .mega-promo { display: none; }
+}
+@media (max-width: 640px) {
+  .steps { grid-template-columns: 1fr; }
+  .slide-deco { display: none; }
+  .booking-main { padding: 22px 18px; }
+  .booking-side { padding: 28px 22px; }
+  .form-row { grid-template-columns: 1fr; gap: 0; }
+  .rental-section { padding: 48px 0; }
+  .btn-ghost, .slide-actions .btn-primary { padding-left: 22px; padding-right: 22px; }
+}

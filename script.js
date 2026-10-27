@@ -51,8 +51,16 @@ document.addEventListener('DOMContentLoaded', () => {
   const hamburger = document.getElementById('hamburgerBtn');
   const megaNav = document.getElementById('megaNav');
   hamburger.addEventListener('click', () => {
-    megaNav.style.display = megaNav.style.display === 'block' ? 'none' : 'block';
+    megaNav.classList.toggle('mobile-open');
     hamburger.classList.toggle('active');
+  });
+  // Mobilde bir menü bağlantısına tıklanınca menüyü kapat (alt menü açan ana başlıklar hariç)
+  megaNav.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => {
+      if (a.parentElement.classList.contains('has-mega')) return;
+      megaNav.classList.remove('mobile-open');
+      hamburger.classList.remove('active');
+    });
   });
 
   /* ============ HELPERS ============ */
@@ -270,6 +278,7 @@ document.addEventListener('DOMContentLoaded', () => {
     toast.classList.add('show');
     toastTimer = setTimeout(() => toast.classList.remove('show'), 2800);
   }
+  window.showToast = showToast; // services.js de kullanır
 
   /* ============ NEWSLETTER ============ */
   const newsletterForm = document.getElementById('newsletterForm');
