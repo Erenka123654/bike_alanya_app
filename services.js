@@ -107,6 +107,11 @@
       waLink.href = `https://api.whatsapp.com/send?phone=${C.whatsappNumber}&text=${encodeURIComponent('Merhaba, bilgi almak istiyorum.')}`;
     }
 
+    const waFloat = $('waFloat');
+    if (waFloat) {
+      waFloat.href = `https://api.whatsapp.com/send?phone=${C.whatsappNumber}&text=${encodeURIComponent('Merhaba, web sitenizdeki ürünler hakkında bilgi alabilir miyim?')}`;
+    }
+
     /* ============ TARİH ALANLARI (geçmiş tarih seçilemesin) ============ */
     function todayISO() {
       const d = new Date();

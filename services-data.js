@@ -11,7 +11,7 @@ window.BIKE_CONFIG = {
 
   /* --- İletişim --------------------------------------------------------- */
   // WhatsApp numarası: ülke koduyla, + ve boşluk olmadan (905xxxxxxxxx)
-  whatsappNumber: '905510931931',
+  whatsappNumber: '905357391260',
   // Telefon (arama butonu için)
   phoneTel: '+905357391260',
   phoneDisplay: '0535 739 12 60',
